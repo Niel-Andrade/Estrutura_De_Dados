@@ -2,19 +2,21 @@
 #include <stdlib.h>
 #include <time.h>
 
-void insertionSort(int *arr, int n) {
-  int i, j, key;
-  for (i = 1; i < n; i++) {
-    key = arr[i];
-    j = i - 1;
-    while (j >= 0 && arr[j] > key) {
-      arr[j + 1] = arr[j];
-      j = j - 1;
+void selection_sort(int num[], int tam) {
+  int i, j, min, aux;
+  for (i = 0; i < (tam - 1); i++) {
+    min = i;
+    for (j = (i + 1); j < tam; j++) {
+      if (num[j] < num[min])
+        min = j;
     }
-    arr[j + 1] = key;
+    if (i != min) {
+      aux = num[i];
+      num[i] = num[min];
+      num[min] = aux;
+    }
   }
 }
-
 void printArray(int arr[], int n) {
   int i;
   for (i = 0; i < n; i++)
@@ -31,7 +33,7 @@ int main() {
 
   float time_spent = 0.0;
   clock_t begin = clock();
-  
+
   srand(time(NULL));
   printf("Vetor desordenado\n");
   for (vAux = 0; vAux < n; vAux++) {
@@ -39,7 +41,7 @@ int main() {
     printf("%d, ", arr[vAux]);
   }
 
-  insertionSort(arr, n);
+  selection_sort(arr, n);
 
   clock_t end = clock();
 

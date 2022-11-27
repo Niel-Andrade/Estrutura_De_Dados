@@ -100,6 +100,7 @@ void heap_sort(int *heap, int n) {
 
 int main(void) {
      double time_spent = 0.0;
+    srand(time(NULL));
 
   int *heap;
   int n;

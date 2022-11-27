@@ -2,19 +2,20 @@
 #include <stdlib.h>
 #include <time.h>
 
-void selection_sort(int num[], int tam) {
+void selection_sort(int num[], int tam) { 
   int i, j, min, aux;
-  for (i = 0; i < (tam - 1); i++) {
-    min = i;
-    for (j = (i + 1); j < tam; j++) {
-      if (num[j] < num[min])
-        min = j;
-    }
-    if (i != min) {
-      aux = num[i];
-      num[i] = num[min];
-      num[min] = aux;
-    }
+  for (i = 0; i < (tam-1); i++) 
+  {
+     min = i;
+     for (j = (i+1); j < tam; j++) {
+       if(num[j] < num[min]) 
+         min = j;
+     }
+     if (i != min) {
+       aux = num[i];
+       num[i] = num[min];
+       num[min] = aux;
+     }
   }
 }
 void printArray(int arr[], int n) {
@@ -25,6 +26,8 @@ void printArray(int arr[], int n) {
 }
 
 int main() {
+  srand(time(NULL));
+
   int n;
   printf("Digite o tamanho do vetor de elementos: ");
   scanf("%d", &n);
@@ -34,8 +37,8 @@ int main() {
   float time_spent = 0.0;
   clock_t begin = clock();
 
-  srand(time(NULL));
   printf("Vetor desordenado\n");
+
   for (vAux = 0; vAux < n; vAux++) {
     arr[vAux] = rand() % (4 * n);
     printf("%d, ", arr[vAux]);
@@ -49,7 +52,7 @@ int main() {
   printArray(arr, n);
 
   time_spent += (float)(end - begin) / CLOCKS_PER_SEC;
-  printf("\nTempo para a execução do código é de: %f segundos.", time_spent);
+  printf("\nO tempo levado para ordenar %d números foi de: %f segundos.", n, time_spent);
 
-  return 0;
+  return 0;
 }

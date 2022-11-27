@@ -26,7 +26,6 @@ void printArray(int arr[], int n) {
 }
 
 int main() {
-  srand(time(NULL));
 
   int n;
   printf("Digite o tamanho do vetor de elementos: ");
@@ -38,6 +37,8 @@ int main() {
   clock_t begin = clock();
 
   printf("Vetor desordenado\n");
+  
+  srand(time(NULL));
 
   for (vAux = 0; vAux < n; vAux++) {
     arr[vAux] = rand() % (4 * n);
